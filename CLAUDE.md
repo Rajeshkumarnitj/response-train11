@@ -26,3 +26,7 @@ npx playwright show-report               # serve the HTML report (default port 9
 ## CI
 
 `Jenkinsfile` (Windows agent, `bat` steps): `npm ci` → `npx playwright install chromium` → `npx playwright test`, then archives `playwright-report/**`. Because CI runs the whole suite, never commit `test.only`.
+
+## Guardrails
+- Never edit data/seed/ or any .env file
+- Ask before changing CI config in .github/

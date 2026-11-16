@@ -1,7 +1,7 @@
 const {test, expect} = require('@playwright/test');
 // const { test, expect } = require('@playwright/test');
 
-test('Sauce demo test', async ({page})=>{
+test('Sauce demo test-1 login and verify page title, item list and first item', async ({page})=>{
 
     const username = page.locator("#user-name");
     const password = page.locator("#password");
@@ -19,38 +19,27 @@ test('Sauce demo test', async ({page})=>{
     console.log(`The title of the page is ${await pageTitle}`);
     await expect(pageTitle).toBe("Swag Labs");
 
+    // wait for the inventory to render before reading it
+    await expect(page.locator(".inventory_item_name")).toHaveCount(6);
+
     const itemsTitle = await page.locator(".inventory_item_name ").allTextContents();
     console.log(`The list of items are ${itemsTitle}`);
     console.log("##########");
     console.log(`The first item name is ${itemsTitle[0]}`);
 
-})
-
-test('Sauce demo test-2', async ({page})=>{
-
-    const username = page.locator("#user-name");
-    const password = page.locator("#password");
-    const loginBtn = page.locator("#login-button");
-
-    await page.goto("https://www.saucedemo.com/");
-    await username.fill("standard_user");
-    await password.fill("secret_sauce");
-    await loginBtn.click();
-    
-    // await expect(page).toHaveTitle('Swag Labs');
-
-    const pageTitle = await page.title();
-    console.log(await pageTitle);
-    await expect(pageTitle).toBe("Swag Labs");
-
-    const itemsTitle = await page.locator(".inventory_item_name ").allTextContents();
-    console.log(itemsTitle);
-    console.log("##########");
-    console.log(itemsTitle[0]);
+    expect(itemsTitle).toEqual([
+        'Sauce Labs Backpack',
+        'Sauce Labs Bike Light',
+        'Sauce Labs Bolt T-Shirt',
+        'Sauce Labs Fleece Jacket',
+        'Sauce Labs Onesie',
+        'Test.allTheThings() T-Shirt (Red)',
+    ]);
+    expect(itemsTitle[0]).toBe('Sauce Labs Backpack');
 
 })
 
-test('Sauce demo test-3 add one item to cart', async ({page})=>{
+test('Sauce demo test-2 add one item to cart', async ({page})=>{
 
     await page.goto("https://www.saucedemo.com/");
     await page.locator("#user-name").fill("standard_user");
@@ -70,7 +59,7 @@ test('Sauce demo test-3 add one item to cart', async ({page})=>{
     await expect(page.locator(".inventory_item_name")).toHaveText(firstItemName);
 })
 
-test('Sauce demo test-4 add most expensive item to cart', async ({page})=>{
+test('Sauce demo test-3 add most expensive item to cart', async ({page})=>{
 
     await page.goto("https://www.saucedemo.com/");
     await page.locator("#user-name").fill("standard_user");
@@ -105,7 +94,7 @@ test('Sauce demo test-4 add most expensive item to cart', async ({page})=>{
     await expect(page.locator(".inventory_item_price")).toHaveText("$" + maxPrice.toFixed(2));
 })
 
-test('Sauce demo test-5 invalid login shows error', async ({page})=>{
+test('Sauce demo test-4 invalid login shows error', async ({page})=>{
 
     await page.goto("https://www.saucedemo.com/");
     await page.locator("#user-name").fill("standard_user");
@@ -116,7 +105,7 @@ test('Sauce demo test-5 invalid login shows error', async ({page})=>{
     await expect(page).toHaveURL("https://www.saucedemo.com/");
 })
 
-test('Sauce demo test-6 locked out user and empty credentials', async ({page})=>{
+test('Sauce demo test-5 locked out user and empty credentials', async ({page})=>{
 
     await page.goto("https://www.saucedemo.com/");
 
@@ -131,7 +120,7 @@ test('Sauce demo test-6 locked out user and empty credentials', async ({page})=>
     await expect(page.locator("[data-test='error']")).toContainText("locked out");
 })
 
-test('Sauce demo test-7 logout', async ({page})=>{
+test('Sauce demo test-6 logout', async ({page})=>{
 
     await page.goto("https://www.saucedemo.com/");
     await page.locator("#user-name").fill("standard_user");
@@ -145,7 +134,7 @@ test('Sauce demo test-7 logout', async ({page})=>{
     await expect(page).toHaveURL("https://www.saucedemo.com/");
 })
 
-test('Sauce demo test-8 sort by price low to high', async ({page})=>{
+test('Sauce demo test-7 sort by price low to high', async ({page})=>{
 
     await page.goto("https://www.saucedemo.com/");
     await page.locator("#user-name").fill("standard_user");
@@ -161,7 +150,7 @@ test('Sauce demo test-8 sort by price low to high', async ({page})=>{
     expect(prices).toEqual([...prices].sort((a, b) => a - b));
 })
 
-test('Sauce demo test-9 remove item from cart', async ({page})=>{
+test('Sauce demo test-8 remove item from cart', async ({page})=>{
 
     await page.goto("https://www.saucedemo.com/");
     await page.locator("#user-name").fill("standard_user");
@@ -179,7 +168,7 @@ test('Sauce demo test-9 remove item from cart', async ({page})=>{
     await expect(page.locator(".shopping_cart_badge")).toHaveCount(0);
 })
 
-test('Sauce demo test-10 checkout flow', async ({page})=>{
+test('Sauce demo test-9 checkout flow', async ({page})=>{
 
     await page.goto("https://www.saucedemo.com/");
     await page.locator("#user-name").fill("standard_user");
@@ -201,7 +190,7 @@ test('Sauce demo test-10 checkout flow', async ({page})=>{
     await expect(page.locator("[data-test='complete-header']")).toHaveText("Thank you for your order!");
 })
 
-test('Sauce demo test-11 checkout requires first name', async ({page})=>{
+test('Sauce demo test-10 checkout requires first name', async ({page})=>{
 
     await page.goto("https://www.saucedemo.com/");
     await page.locator("#user-name").fill("standard_user");

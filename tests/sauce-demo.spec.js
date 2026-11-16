@@ -49,3 +49,4 @@ test('Sauce demo test-2', async ({page})=>{
     console.log(itemsTitle[0]);
 
 })
+//

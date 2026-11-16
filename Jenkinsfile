@@ -1,12 +1,6 @@
 pipeline {
     agent any
 
-
-    triggers {
-        githubPush()
-    }
-
-
     stages {
         stage('Checkout') {
             steps {
@@ -14,27 +8,23 @@ pipeline {
             }
         }
 
-
         stage('Install Dependencies') {
             steps {
-                sh 'npm ci'
-                sh 'npx playwright install --with-deps'
+                bat 'npm ci'
+                bat 'npx playwright install chromium'
             }
         }
 
-
         stage('Run Playwright Tests') {
             steps {
-                sh 'npx playwright test'
+                bat 'npx playwright test'
             }
         }
     }
 
-
     post {
         always {
-            archiveArtifacts artifacts: 'playwright-report/**',
-                             allowEmptyArchive: true
+            archiveArtifacts artifacts: 'playwright-report/**', allowEmptyArchive: true
         }
     }
 }

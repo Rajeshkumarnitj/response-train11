@@ -69,4 +69,38 @@ test('Sauce demo test-3 add one item to cart', async ({page})=>{
     await expect(page.locator(".cart_item")).toHaveCount(1);
     await expect(page.locator(".inventory_item_name")).toHaveText(firstItemName);
 })
+
+test('Sauce demo test-4 add most expensive item to cart', async ({page})=>{
+
+    await page.goto("https://www.saucedemo.com/");
+    await page.locator("#user-name").fill("standard_user");
+    await page.locator("#password").fill("secret_sauce");
+    await page.locator("#login-button").click();
+
+    // find the most expensive item
+    const items = page.locator(".inventory_item");
+    const count = await items.count();
+    let maxPrice = -1;
+    let maxIndex = 0;
+    for (let i = 0; i < count; i++) {
+        const priceText = await items.nth(i).locator(".inventory_item_price").textContent();
+        const price = parseFloat(priceText.replace("$", ""));
+        if (price > maxPrice) {
+            maxPrice = price;
+            maxIndex = i;
+        }
+    }
+    const expensiveItem = items.nth(maxIndex);
+    const expensiveName = await expensiveItem.locator(".inventory_item_name").textContent();
+
+    await expensiveItem.locator("[data-test^='add-to-cart']").click();
+
+    await expect(page.locator(".shopping_cart_badge")).toHaveText("1");
+
+    // cart contains the most expensive item with the right price
+    await page.locator(".shopping_cart_link").click();
+    await expect(page.locator(".cart_item")).toHaveCount(1);
+    await expect(page.locator(".inventory_item_name")).toHaveText(expensiveName);
+    await expect(page.locator(".inventory_item_price")).toHaveText("$" + maxPrice.toFixed(2));
+})
 //

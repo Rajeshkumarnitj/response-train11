@@ -19,12 +19,24 @@ export default defineConfig({
     timeout: 40 *1000,
   },
   reporter: [
+  ['list'],
   ['html', {
-      outputFolder: 'playwright-report',
-      open: 'never'
-    }]
-  ],
+    outputFolder: 'playwright-report',
+    open: 'never'
+  }],
+  ['json', {
+    outputFile: 'playwright-results.json'
+  }]
+],
+// below two reporter are extra for reference
+  // reporter: [
+  // ['html', {
+  //     outputFolder: 'playwright-report',
+  //     open: 'never'
+  //   }]
+  // ],
     // reporter: 'html',
+
   /* Run tests in files in parallel */
   // fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */

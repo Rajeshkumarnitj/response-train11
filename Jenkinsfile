@@ -22,7 +22,6 @@
 //         }
 //     }
 
-    
 // post {
 //     always {
 //         archiveArtifacts artifacts: 'playwright-report/**',
@@ -168,7 +167,6 @@
 
 // }
 
-
 pipeline {
     agent any
 
@@ -204,17 +202,40 @@ pipeline {
             script {
                 def status = currentBuild.currentResult
 
+                // def total = 'N/A'
+                // def passed = 'N/A'
+                // def failed = 'N/A'
+                // def skipped = 'N/A'
+                // def flaky = 'N/A'
+
+                // // Read actual Playwright test statistics
+                // if (fileExists('playwright-results.json')) {
+
+                //     // def results = new groovy.json.JsonSlurperClassic()
+                //     //     .parseText(readFile('playwright-results.json'))
+
+                //     def results = readJSON file: 'playwright-results.json'
+
+                //     if (results.stats) {
+                //         def stats = results.stats
+
+                //         passed = (stats.expected ?: 0) as int
+                //         failed = (stats.unexpected ?: 0) as int
+                //         skipped = (stats.skipped ?: 0) as int
+                //         flaky = (stats.flaky ?: 0) as int
+
+                //         total = passed + failed + skipped + flaky
+                //     }
+                // }
+
                 def total = 'N/A'
                 def passed = 'N/A'
                 def failed = 'N/A'
                 def skipped = 'N/A'
                 def flaky = 'N/A'
 
-                // Read actual Playwright test statistics
                 if (fileExists('playwright-results.json')) {
-
-                    def results = new groovy.json.JsonSlurperClassic()
-                        .parseText(readFile('playwright-results.json'))
+                    def results = readJSON file: 'playwright-results.json'
 
                     if (results.stats) {
                         def stats = results.stats
@@ -226,6 +247,8 @@ pipeline {
 
                         total = passed + failed + skipped + flaky
                     }
+} else {
+                    echo 'Playwright JSON report not found.'
                 }
 
                 def statusColor = status == 'SUCCESS'
@@ -399,4 +422,3 @@ pipeline {
         }
     }
 }
-

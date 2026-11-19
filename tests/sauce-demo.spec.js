@@ -69,4 +69,3 @@ test('Sauce demo test-3 add one item to cart', async ({page})=>{
     await expect(page.locator(".cart_item")).toHaveCount(1);
     await expect(page.locator(".inventory_item_name")).toHaveText(firstItemName);
 })
-//

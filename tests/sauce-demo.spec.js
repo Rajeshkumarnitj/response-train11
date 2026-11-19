@@ -204,4 +204,3 @@ test('Sauce demo test-10 checkout requires first name', async ({page})=>{
 
     await expect(page.locator("[data-test='error']")).toContainText("First Name is required");
 })
-//

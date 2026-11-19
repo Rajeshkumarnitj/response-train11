@@ -23,7 +23,7 @@ export default defineConfig({
       outputFolder: 'playwright-report',
       open: 'never'
     }]
-  ]
+  ],
     // reporter: 'html',
   /* Run tests in files in parallel */
   // fullyParallel: true,

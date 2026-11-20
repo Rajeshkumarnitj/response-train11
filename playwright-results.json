@@ -1,0 +1,220 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\RajeshWork\\Playwright\\response-train11\\node_modules\\@playwright\\test\\cli.js",
+      "test"
+    ],
+    "configFile": "C:\\RajeshWork\\Playwright\\response-train11\\playwright.config.js",
+    "rootDir": "C:/RajeshWork/Playwright/response-train11/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/RajeshWork/Playwright/response-train11/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/RajeshWork/Playwright/response-train11/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "playwright-report",
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "playwright-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.61.1",
+    "workers": 6,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "sauce-demo.spec.js",
+      "file": "sauce-demo.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Sauce demo test",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 996,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "The title of the page is Swag Labs\n"
+                    },
+                    {
+                      "text": "The list of items are Sauce Labs Backpack,Sauce Labs Bike Light,Sauce Labs Bolt T-Shirt,Sauce Labs Fleece Jacket,Sauce Labs Onesie,Test.allTheThings() T-Shirt (Red)\n"
+                    },
+                    {
+                      "text": "##########\n"
+                    },
+                    {
+                      "text": "The first item name is Sauce Labs Backpack\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T23:32:28.764Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4c8995feabe782e28829-e37ec7086ca086478240",
+          "file": "sauce-demo.spec.js",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "Sauce demo test-2",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1075,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "Swag Labs\n"
+                    },
+                    {
+                      "text": "[\n  \u001b[32m'Sauce Labs Backpack'\u001b[39m,\n  \u001b[32m'Sauce Labs Bike Light'\u001b[39m,\n  \u001b[32m'Sauce Labs Bolt T-Shirt'\u001b[39m,\n  \u001b[32m'Sauce Labs Fleece Jacket'\u001b[39m,\n  \u001b[32m'Sauce Labs Onesie'\u001b[39m,\n  \u001b[32m'Test.allTheThings() T-Shirt (Red)'\u001b[39m\n]\n"
+                    },
+                    {
+                      "text": "##########\n"
+                    },
+                    {
+                      "text": "Sauce Labs Backpack\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T23:32:30.111Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4c8995feabe782e28829-cc500278b2fb5fae3aa8",
+          "file": "sauce-demo.spec.js",
+          "line": 29,
+          "column": 1
+        },
+        {
+          "title": "Sauce demo test-3 add one item to cart",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1016,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T23:32:31.218Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4c8995feabe782e28829-03e1bed2e6a1bf128538",
+          "file": "sauce-demo.spec.js",
+          "line": 53,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-19T23:32:28.269Z",
+    "duration": 4323.456,
+    "expected": 3,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

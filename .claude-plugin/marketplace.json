@@ -1,0 +1,12 @@
+{
+  "name": "team-marketplace",
+  "owner": { "name": "Rajeshkumarnitj" },
+  "description": "Team plugins for PR checks and coding standards",
+  "plugins": [
+    {
+      "name": "team-standards",
+      "source": "./plugins/team-standards",
+      "description": "PR check skill and a PreToolUse guard hook"
+    }
+  ]
+}

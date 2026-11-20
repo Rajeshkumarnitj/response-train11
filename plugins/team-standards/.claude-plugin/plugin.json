@@ -1,0 +1,6 @@
+{
+  "name": "team-standards",
+  "version": "0.1.0",
+  "description": "Team standards: PR check skill and a PreToolUse guard hook",
+  "author": { "name": "Rajeshkumarnitj" }
+}
